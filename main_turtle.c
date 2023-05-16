@@ -64,27 +64,9 @@ void input() {
         ////////////////////////////////////////////////////////////////////////////////////////////
         //                                          For | Quarter
         ////////////////////////////////////////////////////////////////////////////////////////////
-            if ((forward >= 0) && (turn > 0 && turn <= 45) && (engine > (-1 * forward) + counter)){
-                if(turn >= 1 && turn < 5){
-                    step = 10;
-                } else if (turn >= 5 && turn < 10){
-                     step = 9;
-                } else if (turn >= 10 && turn < 15){
-                     step = 8;
-                } else if (turn >= 15 && turn < 20){
-                     step = 7;
-                } else if (turn >= 20 && turn < 25){
-                     step = 6;
-                } else if (turn >= 25 && turn < 30){
-                     step = 5;
-                } else if (turn >= 30 && turn < 35){
-                     step = 4;
-                } else if (turn >= 35 && turn < 40){
-                     step = 3;
-                } else if (turn >= 40 && turn < 45){
-                     step = 2;
-                } else if (turn == 45){
-                     step = 1;
+            if (forward >= 0 && turn > 0 && turn <= 45 && engine > (-1 * forward) + counter){
+                if(turn >= 1 && turn <= 45){
+                    step = 10 - ((turn - 1) / 5);
                 }
 				//we use this if to make shift every -n step
                 if(engine == tmp1 - step + 2){
@@ -101,24 +83,8 @@ void input() {
                     scale[i][j] = scale[i][j]; //otherwise the programm wouldn't change the cell if user chose "lift the tail"
                 }
             } else if ((forward >= 0) && (turn >= 46 && turn < 90) && (vec_y > (-1 * forward) + counter)) {
-                if(turn >= 1 && turn < 5){
-                    step = 10;
-                } else if (turn >= 85 && turn < 90){
-                     step = 9;
-                } else if (turn >= 80 && turn < 85){
-                     step = 8;
-                } else if (turn >= 75 && turn < 80){
-                     step = 7;
-                } else if (turn >= 70 && turn < 75){
-                     step = 6;
-                } else if (turn >= 65 && turn < 70){
-                     step = 5;
-                } else if (turn >= 60 && turn < 65){
-                     step = 4;
-                } else if (turn >= 50 && turn < 55){
-                     step = 3;
-                } else if (turn >= 46 && turn < 50){
-                     step = 2;
+                if(turn >= 46 && turn < 90){
+                    step = (turn / 5) - 7;
                 }
                 if(vec_y == -1 * (tmp + step)){
                     engine--;
@@ -137,26 +103,8 @@ void input() {
         //                                          For || Quarter
         ////////////////////////////////////////////////////////////////////////////////////////////
             } else if ((forward >= 0) && (turn > 90 && turn <= 135) && (vec_y > (-1 * forward) + counter1)){
-                if(turn <= 95 && turn > 90){
-                    step = 10;
-                } else if (turn <= 100 && turn > 95){
-                     step = 9;
-                } else if (turn <= 105 && turn > 100){
-                     step = 8;
-                } else if (turn <= 110 && turn > 105){
-                     step = 7;
-                } else if (turn <= 115 && turn > 110){
-                     step = 6;
-                } else if (turn <= 120 && turn > 115){
-                     step = 5;
-                } else if (turn <= 125 && turn > 120){
-                     step = 4;
-                } else if (turn <= 130 && turn > 125){
-                     step = 3;
-                } else if (turn <= 134 && turn > 130){
-                     step = 2;
-                } else if (turn == 135){
-                     step = 1;
+                if(turn > 90 && turn <= 135){
+                    step = 10 - ((turn - 90) / 5);
                 }
                 if(vec_y == -1 * (tmp + step)){
                     engine++;
@@ -172,25 +120,9 @@ void input() {
                     scale[i][j] = scale[i][j];
                 }
             } else if ((forward >= 0) && (turn >= 136 && turn < 180) && (engine < forward + counter)) {
-                if(turn >= 175 && turn < 180){
-                    step = 10;
-                 } else if (turn >= 170 && turn < 175){
-                     step = 9;
-                } else if (turn >= 155 && turn < 170){
-                     step = 8;
-                } else if (turn >= 160 && turn < 165){
-                     step = 7;
-                } else if (turn >= 155 && turn < 160){
-                     step = 6;
-                } else if (turn >= 150 && turn < 155){
-                     step = 5;
-                } else if (turn >= 145 && turn < 150){
-                     step = 4;
-                } else if (turn >= 140 && turn < 145){
-                     step = 3;
-                } else if (turn >= 136 && turn < 140){
-                     step = 2;
-                } 
+                if(turn >= 136 && turn < 180){
+                    step = ((turn - 90) / 5) - 7;
+                }
                 if(engine == tmp1 + step + 1){
                     vec_y--;
                     tmp1 = tmp1 + step;
@@ -208,26 +140,8 @@ void input() {
         //                                          For ||| Quarter
         ////////////////////////////////////////////////////////////////////////////////////////////
             } else if ((forward >= 0) && (turn < 270 && turn >= 225) && (vec_y < forward + counter1)){ 
-                if(turn >= 265 && turn < 270){
-                    step = 10;
-                 } else if (turn >= 260 && turn < 265){
-                     step = 9;
-                } else if (turn >= 255 && turn < 260){
-                     step = 8;
-                } else if (turn >= 250 && turn < 255){
-                     step = 7;
-                } else if (turn >= 245 && turn < 250){
-                     step = 6;
-                } else if (turn >= 240 && turn < 245){
-                     step = 5;
-                } else if (turn >= 235 && turn < 240){
-                     step = 4;
-                } else if (turn >= 230 && turn < 235){
-                     step = 3;
-                } else if (turn >= 226 && turn < 230){
-                     step = 2;
-                } else if (turn == 225){
-                     step = 1;
+                if(turn < 270 && turn >= 225){
+                    step = ((turn - 180) / 5) - 7;
                 }
                 if(vec_y == tmp + step){
                     engine++;
@@ -243,24 +157,8 @@ void input() {
                     scale[i][j] = scale[i][j];
                 }
             } else if ((forward >= 0) && (turn < 225 && turn >= 181) && (vec_y < forward + counter1)){
-                if (turn <= 185 && turn > 180){
-                    step = 10;
-                } else if (turn <= 190 && turn > 185){
-                     step = 9;
-                 } else if (turn <= 195 && turn > 190){
-                     step = 8;
-                } else if (turn <= 200 && turn > 195){
-                     step = 7;
-                } else if (turn <= 205 && turn > 200){
-                     step = 6;
-                } else if (turn <= 210 && turn > 205){
-                     step = 5;
-                } else if (turn <= 215 && turn > 210){
-                     step = 4;
-                } else if (turn <= 220 && turn > 215){
-                     step = 3;
-                } else if (turn <= 224 && turn > 220){
-                     step = 2;
+                if(turn < 225 && turn >= 181){
+                    step = 10 - ((turn - 180) / 5);
                 }
                 if(engine == tmp1 + step){
                     vec_y++;
@@ -279,26 +177,8 @@ void input() {
         //                                          For |||| Quarter
         ////////////////////////////////////////////////////////////////////////////////////////////
             } else if ((forward >= 0) && (turn <= 315 && turn >= 271) && (vec_y < forward + counter1)){ 
-                if(turn >= 271 && turn < 275){
-                    step = 10;
-                } else if (turn >= 275 && turn < 280){
-                    step = 9;
-                } else if (turn >= 280 && turn < 285){
-                    step = 8;
-                } else if (turn >= 285 && turn < 290){
-                    step = 7;
-                } else if (turn >= 290 && turn < 295){
-                    step = 6;
-                } else if (turn >= 295 && turn < 300){
-                    step = 5;
-                } else if (turn >= 300 && turn < 305){
-                    step = 4;
-                } else if (turn >= 305 && turn < 310){
-                    step = 3;
-                } else if (turn >= 310 && turn < 315){
-                    step = 2;
-                } else if (turn == 315){
-                    step = 1;
+                if(turn <= 315 && turn >= 271){
+                    step = 10 - ((turn - 270) / 5);
                 }
                 if(vec_y == tmp + step){
                     engine--;
